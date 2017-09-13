@@ -37,10 +37,35 @@ def weight_variable(shape):
 def bias_variable(shape):
     inital = tf.constant(0.01, shape = shape)
     """
+    constant(value, dtype=None, shape=None, name='Const', verify_shape=False)
+    上面这个函数是创建一个常数张量
+    value -- 一个类型为dtype常量(常量列表)
+    dtype -- 指定生成的张量的类型
+    shape -- 可选参数, 指定生成的张量的纬度
+    name  -- 可选参数, 指定生成的张量的名字
+    verify_shape -- 可选参数，布尔类型  是否启用验证value的形状
 
     """
     return tf.Variable(inital)
-def conv2d(x, W, stride);
+
+def conv2d(x, W, stride):
+
+    """
+    tf.nn.conv2d(input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None)
+    上面这个函数是通过输入规定的四维input和filter计算二维卷积
+
+    input: 一个张量。必须为这些类型之一: half, float32, float64
+    filter: 一个张量。必须要和input的类型一致
+    strides： 一个整数列表。长度为4的一维矩阵。input的每一个维度的滑动窗格的步骤。必须与使用data_format指定
+的维度具有相同的顺序。
+    padding: 字符串类型，可选值为："SAME", "VALID"／
+    use_cudnn_on_gpu: 一个可选的布尔参数.默认为True
+    data_format: 一个可选的字符串参数。可选值为："NHWC", "NHWC"。默认为"NHWC"
+    name: 操作的名称
+
+    """
+    return tf.nn.conv2d(x, W, strides = [1, stride, stride, 1], padding = "SAME")
+
 def max_pool_2x2(x);
 def createNetwork();
 def trainNetwork(s, readout, h_fc1, sess);
